@@ -1,0 +1,7 @@
+.usernameInput {
+    @apply bg-gray-700 rounded-lg p-2 bottom-0 left-0 right-0 w-full active:outline-none focus:outline-none;
+}
+
+.warning {
+    @apply text-left text-xs mt-1 ml-1 text-red-300;
+}

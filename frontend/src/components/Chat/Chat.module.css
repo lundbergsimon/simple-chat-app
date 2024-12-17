@@ -1,0 +1,20 @@
+.userHeader {
+  @apply text-2xl mb-2 text-right;
+}
+
+.chatWindow {
+  @apply bg-gray-800 rounded-xl w-96 border-solid border-2 border-sky-500 relative p-2 flex flex-col;
+  height: 500px;
+}
+
+.messageInput {
+  @apply bg-gray-700 rounded-lg p-2 bottom-0 left-0 right-0 w-full active:outline-none focus:outline-none;
+}
+
+.formContainer {
+  @apply h-fit mt-2;
+}
+
+.form {
+  @apply flex gap-2;
+}

@@ -1,0 +1,19 @@
+.messageContainer {
+    @apply w-full flex flex-col;
+}
+
+.chatBubble {
+    @apply text-left rounded-lg p-2 w-8/12 max-w-fit break-words;
+}
+
+.received {
+    @apply bg-gray-700 float-left;
+}
+
+.sent {
+    @apply bg-green-700 float-right;
+}
+
+.username {
+    @apply text-xs text-left;
+}

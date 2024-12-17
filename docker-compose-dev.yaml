@@ -1,0 +1,39 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: dev.Dockerfile
+      args:
+        - PORT=${FC_PORT}
+    # NOTE: All environment variables has to start with VITE_
+    environment:
+      - VITE_FH_URL=${FH_URL}
+      - VITE_FH_PORT=${FH_PORT}
+      - VITE_FC_PORT=${FC_PORT}
+      - VITE_BH_URL=${BH_URL}
+      - VITE_BH_PORT=${BH_PORT}
+    ports:
+      - ${FH_PORT}:${FC_PORT}
+    volumes:
+      - ./frontend:/app # Bind mount the current directory to the /app directory in the container
+      - /app/node_modules # Prevent overwriting node_modules in the container
+    depends_on:
+      - backend
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: dev.Dockerfile
+      args:
+        - PORT=${BC_PORT}
+    environment:
+      - BH_PORT=${BH_PORT}
+      - FH_URL=${FH_URL}
+      - FH_PORT=${FH_PORT}
+    volumes:
+      - ./backend:/app # Bind mount the current directory to the /app directory in the container
+      - /app/node_modules # Prevent overwriting node_modules in the container
+    ports:
+      - "${BH_PORT}:${BC_PORT}"
